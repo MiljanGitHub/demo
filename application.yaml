@@ -1,0 +1,76 @@
+messenger:
+  smsc:
+    charset: "ISO-10646-UCS-2"
+    host1:
+      ip: "10.230.152.27"
+      port: 2775
+      systemId: "mssgr_T1"
+      password: "LWTJmdpE"
+    host2:
+      host1:
+      ip: "10.230.152.27"
+      port: 2775
+      systemId: "mssgr_T1"
+      password: "LWTJmdpE"
+  filter:
+    sender:
+      sms:
+        whiteList: "Sunrise,5522,ALDI Mobile,Nute,58661"
+      mms:
+        whiteList: "Sunrise,123mobile,777"
+      email:
+        whiteList: "test.test@sunrise.net"
+    sms:
+      useTestMsisdn: "false"
+      testMsisdn: "0779868777"
+      whiteList: "0779868777"
+      blackList: "0764630325"
+    mms:
+      useTestMsisdn: "false"
+      testMsisdn: "0779868777"
+      whiteList: "0764630325"
+      blackList: "0779868777"
+    email:
+      useTestEmail: "false"
+      testEmail: "test.test@sunrise.net"
+      whiteList: "test.test@sunrise.net"
+      blackList: ""
+    cacheLifetime: 600000
+  sendsms:
+    quota: 100
+    quotaDuration: 1
+    batchSize:  6000
+    poolSize:  4
+    awaitTime:  300
+    deliveryReceipt: true
+    retryCount:  3
+    validFor:  2
+  sendmms:
+    quota: 10
+    quotaDuration: 1
+    batchSize:  10
+    poolSize:  4
+    awaitTime:  300
+    deliveryReceipt: true
+    retryCount:  0
+  sendEmail:
+    batchSize:  35
+    deliveryReceipt: true
+  checkEmailStatus:
+    batchSize:  35
+  systemlimit:
+    quota: 150
+    quotaDuration: 1
+    mms:
+      quota: 10
+      quotaDuration: 1
+  kafka:
+    messagestatus:
+      topic: sunrise.messenger.ntf.messagestatus.dev.0
+    enabled: false
+    maxattempts: 10
+
+
+job:
+  MessageProcessingJob:
+    cronExpression: "0 0/1 * * * *"
